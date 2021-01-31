@@ -1,0 +1,43 @@
+{
+  "name": "backend",
+  "version": "0.1.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "bin": {
+    "backend": "bin/backend.js"
+  },
+  "scripts": {
+    "build": "yarn build:bundle && yarn build:clean && yarn build:compile",
+    "build:bundle": "shx mkdir -p dist/layer/nodejs && shx cp package.json dist/layer/nodejs && shx cp ../../yarn.lock dist/layer/nodejs && yarn --cwd dist/layer/nodejs --production install",
+    "build:clean": "tsc --build --clean",
+    "build:compile": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "deploy": "cdk deploy",
+    "format": "prettier --write '{lambda,lib}/**/*.ts'"
+  },
+  "dependencies": {
+    "aws-sdk": "2.720.0",
+    "node-fetch": "^2.6.1",
+    "source-map-support": "0.5.16"
+  },
+  "devDependencies": {
+    "@aws-cdk/assert": "1.87.0",
+    "@aws-cdk/aws-apigateway": "1.87.0",
+    "@aws-cdk/aws-lambda": "1.87.0",
+    "@aws-cdk/aws-lambda-nodejs": "1.87.0",
+    "@aws-cdk/core": "1.87.0",
+    "@types/aws-lambda": "8.10.59",
+    "@types/jest": "25.2.1",
+    "@types/node": "10.17.5",
+    "@types/node-fetch": "2.5.8",
+    "aws-cdk": "1.87.0",
+    "jest": "25.5.0",
+    "prettier": "2.0.5",
+    "shx": "0.3.2",
+    "ts-jest": "25.3.1",
+    "ts-node": "8.1.0",
+    "typescript": "3.9.6"
+  }
+}
